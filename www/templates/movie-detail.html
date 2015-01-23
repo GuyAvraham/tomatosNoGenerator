@@ -7,10 +7,16 @@
                 <img ng-src="{{currentMovie.posters.detailed }}"/>
                 <h2>{{currentMovie.year}} {{currentMovie.title}}</h2>
                 <p>{{currentMovie.synopsis}}</p>
-
-                <p><></p>
             </div>
+            <div class="item item-avatar" ng-repeat="r in reviewsList">
+                <h2>{{r.critic}}</h2>
+                <h4>{{r.publication}} {{r.date}}</h4>
 
+                <p> " {{r.quote}} " </p>
+
+                <p><a ng-href={{r.links.review}}>to the full review....</a></p>
+
+            </div>
         </div>
 
     </ion-content>

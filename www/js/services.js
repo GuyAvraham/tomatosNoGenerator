@@ -12,9 +12,7 @@ angular.module('directory.services', ['ngResource'])
         RottenFactory = {};
 
         RottenFactory.getById = function (id) {
-            console.log("search with " + id);
             var link = 'http://api.rottentomatoes.com/api/public/v1.0/movies/' + id + '.json';
-            // todo insert id as param
             var rottenMovies = $http.jsonp(link, {
                 params: {
                     apikey: ApiKey,
@@ -22,6 +20,12 @@ angular.module('directory.services', ['ngResource'])
                 }
             });
             return rottenMovies;
+        }
+
+        RottenFactory.reviewsById = function (id) {
+            var link = 'http://api.rottentomatoes.com/api/public/v1.0/movies/' + id + '/reviews.json';
+            var reviews = $http.jsonp(link, {params: {apikey: ApiKey, callback: 'JSON_CALLBACK'}});
+            return reviews;
         }
         return RottenFactory;
     }]);
