@@ -15,7 +15,7 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {
-
+// todo use ui-router
         $stateProvider
 
             .state('search', {
@@ -24,7 +24,7 @@ angular.module('directory', ['ionic', 'directory.controllers', 'directory.servic
                 controller: 'MoviesListCtrl'
             })
             .state('movie', {
-                url: '/details',
+                url: '/details/:id',
                 templateUrl: 'templates/movie-detail.html',
                 controller: 'MovieDetailCtrl'
             })

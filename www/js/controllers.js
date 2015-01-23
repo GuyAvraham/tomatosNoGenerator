@@ -15,19 +15,13 @@ angular.module('directory.controllers', [])
                 $scope.movies = data.movies;
             })
         }
-
-        $scope.movieClick = function (movie) {
-            console.log(movie);
-            $scope.currentMovie = movie;
-            $state.go('movie');
-        }
     })
 
-    .controller('MovieDetailCtrl', function () {
-        console.log('details');
+    .controller('MovieDetailCtrl', function ($scope, $stateParams, RottenFactory) {
+        console.log('details ' + $stateParams.id);
+        RottenFactory.getById($stateParams.id).success(function (data) {
+            $scope.currentMovie = data;
+            console.log($scope.currentMovie);
+            console.log($scope.currentMovie.synopsis);
+        });
     })
-/*
- .controller('EmployeeReportsCtrl', function ($scope, $stateParams, Employees) {
- console.log('reports');
- $scope.employee = Employees.get({employeeId: $stateParams.employeeId, data: 'reports'});
- });*/
